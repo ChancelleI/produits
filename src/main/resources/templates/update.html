@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <title>modifier un produit</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>modifier un produitdu Systeme</h1>
+        <form action="#" th:action="@{/saveProduit}" th:object="${produit}" method="POST">
+            <input type="text" th:field="*{Name}" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{description}" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{prix}" class="form-control mb-4 col-4">
+
+            <button type="submit" class="btn btn-info col-2"> Update produit</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>save un produits</title>
+</head>
+<style type="text/css">
+    body {
+        background-color: aquamarine;
+        background-size: cover;
+    }
+    
+    input {
+        background: transparent;
+        margin-top: 10px;
+    }
+    
+    fieldset {
+        width: 550px;
+    }
+    
+    .sombre {
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, .7);
+        margin: -8px;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    #submit {
+        margin-top: 40px;
+        padding: 20px;
+        border-radius: 70px;
+        cursor: pointer;
+        background: transparent;
+        color: black;
+        transition: .7s;
+        width: 200px;
+        outline: none;
+        display: block;
+        border: 2px solid yellow;
+        display: inline;
+        color: aliceblue;
+    }
+    
+    #submit:hover {
+        background: rgba(63, 167, 231, .3);
+    }
+    
+    table {
+        width: 75%;
+    }
+    
+    a {
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        background: transparent;
+        border: 3px solid #409034;
+        margin-top: 24px;
+        letter-spacing: 1px;
+        font-style: oblique;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+    
+    td {
+        height: 70px;
+    }
+    
+    form a {
+        background: green;
+    }
+    
+    #t:hover {
+        background: green;
+    }
+    
+    #d:hover {
+        background: red;
+    }
+</style>
+
+<body>
+    <div class="sombre"></div>
+    <fieldset>
+        <legend>
+            <h1>ENREGISTREMENT</h1>
+        </legend>
+        <form method="post" action="#" th:action="@{/save}" th:object="${produit}">
+            <label for="nom">NOM : </label>
+            <input type="text" id="name" name="nom" /><br>
+            <label for="Description">DESCRIPTION : </label>
+            <input type="text" id="description" name="description" /><br>
+            <label for="prix">PRIX : </label>
+            <input type="num" id="prix" name="prix" /><br>
+            <input type="submit" id="submit" value="valider">
+            <input type="submit" id="submit" value="delete">
+
+        </form>
+    </fieldset><br>
+
+    <table border="4">
+        <tr>
+            <th>produit name</th>
+            <th>produit description</th>
+            <th>prix</th>
+            <th> Actions </th>
+        </tr>
+
+        <tr th:each="produit : ${listProduits}">
+            <td th:text="${produit.name}"></td>
+            <td th:text="${produit.description}"></td>
+            <td th:text="${produit.prix}"></td>
+            <td>
+            <a th:href="@{/deleteProduit/{id}(id=${produit.id})}" id="d" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
